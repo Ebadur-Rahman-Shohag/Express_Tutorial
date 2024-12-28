@@ -12,11 +12,13 @@ const express = require("express");
 
 const app = express();
 
+// In a middlware function we must call the next() or send response directly from the middleware function.
 const logger = (req, res, next) => {
     const method = req.method;
     const url = req.url;
     const year = new Date().getFullYear();
     console.log(method, url, year);
+    // res.send("Testing")
     next();
 };
 

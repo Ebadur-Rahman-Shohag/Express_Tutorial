@@ -4,7 +4,7 @@ const path = require('path')
 const app = express()
 
 //setup static and middleware
-//index.html is also a static file. SO, we can move this this file to the public folder and express will send this file automaticlly to the client.
+//index.html is also a static file. SO, we can move this file to the public folder and express will send this file automaticlly to the client.
 app.use(express.static('./public'))
 
 // app.get('/', (req, res) => {

@@ -14,13 +14,18 @@ const authorize = require("./authorize");
 
 const app = express();
 
-// app.use(logger); //Now logger will work for every route
-//app.use("/api", logger); //we can set path in the app.use(). Now logger will work for "/api/priducts" and "/api/items" routes. But this will not work for "/" and "/about" route.
+// app.use(logger); //Now logger will work for every route. Because app.use() apply middleware to every route we have in our application
+//app.use("/api", logger); //we can set path in the app.use(). Now logger will work for "/api/products" and "/api/items" routes. But this will not work for "/" and "/about" route.
 app.use([logger, authorize]); //we can add multiple middleware in app.use() like this
+
+
 
 app.get("/", (req, res) => {
     res.send("Home");
 });
+
+//In express.js order matters. If we write app.use(logger) after the home route the logger middleware will not work for home route.
+//app.use(logger) //logger will not work for the home route.
 
 app.get("/about", (req, res) => {
     // console.log(req.user);

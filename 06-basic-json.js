@@ -1,5 +1,6 @@
 const express = require("express");
 const { products } = require("./data");
+// console.log(products);
 
 const app = express();
 
